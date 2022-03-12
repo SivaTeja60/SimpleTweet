@@ -30,6 +30,9 @@ class TweetsAdapter(val tweets: ArrayList<Tweet>): RecyclerView.Adapter<TweetsAd
         holder.tvUserName.text = tweet.user?.name
         holder.tvTweetBody.text = tweet.body
 
+        var newTime = TimeFormatter.getTimeDifference(tweet.createdAt)
+        holder.tvTime.text = newTime
+
         Glide.with(holder.itemView).load(tweet.user?.publicImageUrl).into(holder.ivProfileImage)
     }
 
@@ -52,6 +55,7 @@ class TweetsAdapter(val tweets: ArrayList<Tweet>): RecyclerView.Adapter<TweetsAd
         val ivProfileImage = itemView.findViewById<ImageView>(R.id.ivProfileImage)
         val tvUserName = itemView.findViewById<TextView>(R.id.tvUsername)
         val tvTweetBody = itemView.findViewById<TextView>(R.id.tvTweetBody)
+        val tvTime = itemView.findViewById<TextView>(R.id.tvTime)
 
 
     }
